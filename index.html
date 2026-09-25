@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>KHALIF-BUS | Online Store</title>
+  <title>KHALIF-BUS Admin</title>
 
   <style>
     * {
@@ -15,351 +15,248 @@
     }
 
     body {
-      background: #f5f6f8;
-      color: #111;
+      background: #f3f4f6;
+      color: #111827;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 18px 20px;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
+    header h1 {
+      font-size: 23px;
     }
 
-    .cart-button {
-      background: #22c55e;
-      color: white;
+    .logout {
+      background: #ef4444;
       border: none;
-      padding: 11px 16px;
-      border-radius: 8px;
-      font-weight: bold;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 7px;
       cursor: pointer;
     }
 
-    .hero {
-      text-align: center;
-      padding: 45px 20px;
-      background: white;
-    }
-
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      color: #666;
-      font-size: 17px;
-    }
-
-    .products {
+    .container {
       max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-     <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KHALIF-BUS</title>
+      margin: auto;
+      padding: 20px;
+    }
 
-<style>
-*{box-sizing:border-box}
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
 
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f6f8;
-  color:#111827;
-}
+    .stat {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:#111827;
-  color:white;
-  padding:16px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    .stat h3 {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
 
-.logo{
-  font-size:24px;
-  font-weight:800;
-}
+    .stat p {
+      font-size: 26px;
+      font-weight: bold;
+    }
 
-.cart-btn{
-  background:#2563eb;
-  color:white;
-  border:0;
-  padding:10px 15px;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
+    .orders {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
 
-.hero{
-  background:linear-gradient(135deg,#111827,#2563eb);
-  color:white;
-  text-align:center;
-  padding:75px 20px;
-}
+    .orders-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
 
-.hero h1{
-  font-size:clamp(40px,10vw,70px);
-  margin:0 0 15px;
-}
+    .clear {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
 
-.hero p{
-  font-size:19px;
-  line-height:1.6;
-  max-width:650px;
-  margin:auto;
-}
+    .order {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:45px 20px;
-}
+    .order-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
 
-.search{
-  width:100%;
-  padding:15px;
-  border:1px solid #d1d5db;
-  border-radius:10px;
-  font-size:16px;
-  margin-bottom:30px;
-}
+    .order-id {
+      font-weight: bold;
+      color: #2563eb;
+    }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
+    .customer {
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
 
-.product{
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
-}
+    .items {
+      background: #f9fafb;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
 
-.product-image{
-  height:170px;
-  background:#e5e7eb;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:60px;
-}
+    .total {
+      font-size: 19px;
+      font-weight: bold;
+    }
 
-.product-info{
-  padding:18px;
-}
+    .empty {
+      text-align: center;
+      padding: 50px 10px;
+      color: #6b7280;
+    }
 
-.product-info h3{
-  margin:0 0 8px;
-}
+    .login {
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.1);
+    }
 
-.price{
-  color:#2563eb;
-  font-size:20px;
-  font-weight:bold;
-  margin:12px 0;
-}
+    .login h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-.add{
-  width:100%;
-  background:#111827;
-  color:white;
-  border:0;
-  padding:12px;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 16px;
+    }
 
-.add:hover{
-  background:#2563eb;
-}
+    .login button {
+      width: 100%;
+      padding: 13px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-.no-products{
-  display:none;
-  text-align:center;
-  padding:30px;
-  color:#6b7280;
-}
-
-footer{
-  background:#111827;
-  color:white;
-  text-align:center;
-  padding:25px;
-}
-
-/* CART */
-
-.overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  z-index:100;
-}
-
-.cart-panel{
-  position:absolute;
-  right:0;
-  top:0;
-  height:100%;
-  width:min(430px,92%);
-  background:white;
-  padding:22px;
-  overflow-y:auto;
-}
-
-.cart-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #ddd;
-  padding-bottom:15px;
-}
-
-.close{
-  background:#e5e7eb;
-  border:0;
-  padding:8px 12px;
-  border-radius:7px;
-  cursor:pointer;
-}
-
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:16px 0;
-  border-bottom:1px solid #eee;
-}
-
-.quantity{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.quantity button{
-  width:30px;
-  height:30px;
-  border:1px solid #ccc;
-  background:white;
-  border-radius:5px;
-  cursor:pointer;
-}
-
-.total{
-  font-size:22px;
-  font-weight:bold;
-  margin:22px 0;
-}
-
-.checkout{
-  width:100%;
-  background:#16a34a;
-  color:white;
-  border:0;
-  padding:14px;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.empty-cart{
-  text-align:center;
-  padding:30px 0;
-  color:#6b7280;
-}
-</style>
+    .error {
+      color: #dc2626;
+      text-align: center;
+      margin-top: 12px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">KHALIF-BUS</div>
+<div id="loginPage">
 
-  <button class="cart-btn" onclick="openCart()">
-    🛒 Cart (<span id="cartCount">0</span>)
-  </button>
-</header>
+  <div class="login">
 
-<section class="hero">
-  <h1>KHALIF-BUS</h1>
-  <p>
-    Discover products, shop easily,
-    and grow with us.
-  </p>
-</section>
+    <h2>🔐 KHALIF-BUS Admin</h2>
 
-<main class="container">
+    <input
+      type="password"
+      id="password"
+      placeholder="Admin password"
+    >
 
-  <input
-    id="search"
-    class="search"
-    type="search"
-    placeholder="Search products..."
-  >
+    <button onclick="login()">
+      Login
+    </button>
 
-  <div id="products" class="products"></div>
+    <p id="error" class="error"></p>
 
-  <div id="noProducts" class="no-products">
-    No products found.
   </div>
 
-</main>
-
-<footer>
-  <strong>KHALIF-BUS</strong>
-  <p>© 2026 KHALIF-BUS</p>
-</footer>
+</div>
 
 
-<!-- CART WINDOW -->
+<div id="dashboard" style="display:none;">
 
-<div id="overlay" class="overlay">
+  <header>
 
-  <div class="cart-panel">
+    <h1>🚀 KHALIF-BUS ADMIN</h1>
 
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-
-      <button class="close" onclick="closeCart()">
-        ✕
-      </button>
-    </div>
-
-    <div id="cartItems"></div>
-
-    <div id="cartTotal" class="total">
-      Total: KSh 0
-    </div>
-
-    <button class="checkout" onclick="checkout()">
-      Checkout
+    <button class="logout" onclick="logout()">
+      Logout
     </button>
+
+  </header>
+
+
+  <div class="container">
+
+    <div class="stats">
+
+      <div class="stat">
+        <h3>Total Orders</h3>
+        <p id="totalOrders">0</p>
+      </div>
+
+      <div class="stat">
+        <h3>Total Sales</h3>
+        <p>KSh <span id="totalSales">0</span></p>
+      </div>
+
+      <div class="stat">
+        <h3>Products Sold</h3>
+        <p id="productsSold">0</p>
+      </div>
+
+    </div>
+
+
+    <div class="orders">
+
+      <div class="orders-header">
+
+        <h2>Customer Orders</h2>
+
+        <button class="clear" onclick="clearOrders()">
+          Clear Orders
+        </button>
+
+      </div>
+
+      <div id="ordersList"></div>
+
+    </div>
 
   </div>
 
@@ -368,353 +265,261 @@ footer{
 
 <script>
 
-const products = [
+  /*
+    DEMO ADMIN PASSWORD
 
-  {
-    id:1,
-    name:"Smartphone",
-    price:15000,
-    icon:"📱",
-    description:"Modern smartphone for everyday use."
-  },
+    Change this before testing.
+    This is NOT secure for a real business.
+  */
 
-  {
-    id:2,
-    name:"Wireless Headphones",
-    price:2500,
-    icon:"🎧",
-    description:"Comfortable wireless headphones."
-  },
-
-  {
-    id:3,
-    name:"Laptop",
-    price:45000,
-    icon:"💻",
-    description:"A laptop for school and work."
-  },
-
-  {
-    id:4,
-    name:"Sports Shoes",
-    price:3000,
-    icon:"👟",
-    description:"Comfortable shoes for active lifestyles."
-  }
-
-];
+  const ADMIN_PASSWORD = "KHALIF2026";
 
 
-let cart = JSON.parse(
-  localStorage.getItem("khalifCart") || "[]"
-);
+  function login() {
 
+    const password =
+      document.getElementById("password").value;
 
-function saveCart(){
+    if (password === ADMIN_PASSWORD) {
 
-  localStorage.setItem(
-    "khalifCart",
-    JSON.stringify(cart)
-  );
+      sessionStorage.setItem(
+        "khalifAdmin",
+        "true"
+      );
 
-}
+      showDashboard();
 
+    } else {
 
-function money(number){
+      document.getElementById("error").textContent =
+        "Incorrect password.";
 
-  return "KSh " +
-    number.toLocaleString("en-KE");
-
-}
-
-
-function showProducts(list){
-
-  const box =
-    document.getElementById("products");
-
-  const empty =
-    document.getElementById("noProducts");
-
-
-  box.innerHTML = "";
-
-
-  if(list.length === 0){
-
-    empty.style.display = "block";
-
-    return;
+    }
 
   }
 
 
-  empty.style.display = "none";
+  function showDashboard() {
+
+    document.getElementById("loginPage").style.display =
+      "none";
+
+    document.getElementById("dashboard").style.display =
+      "block";
+
+    loadOrders();
+
+  }
 
 
-  list.forEach(product => {
+  function logout() {
 
-    box.innerHTML += `
+    sessionStorage.removeItem("khalifAdmin");
 
-      <div class="product">
+    location.reload();
 
-        <div class="product-image">
-          ${product.icon}
-        </div>
-
-        <div class="product-info">
-
-          <h3>${product.name}</h3>
-
-          <p>${product.description}</p>
-
-          <div class="price">
-            ${money(product.price)}
-          </div>
-
-          <button
-            class="add"
-            onclick="addToCart(${product.id})"
-          >
-            Add to Cart
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-}
+  }
 
 
-function addToCart(id){
+  function loadOrders() {
 
-  const existing =
-    cart.find(item => item.id === id);
+    const orders =
+      JSON.parse(
+        localStorage.getItem("khalifOrders")
+      ) || [];
 
 
-  if(existing){
+    const ordersList =
+      document.getElementById("ordersList");
 
-    existing.quantity++;
 
-  }else{
+    let sales = 0;
 
-    cart.push({
-      id:id,
-      quantity:1
+    let products = 0;
+
+
+    orders.forEach(order => {
+
+      sales += Number(order.total) || 0;
+
+
+      if (order.items) {
+
+        order.items.forEach(item => {
+
+          products += Number(item.quantity) || 0;
+
+        });
+
+      }
+
     });
 
-  }
+
+    document.getElementById("totalOrders")
+      .textContent = orders.length;
 
 
-  saveCart();
-
-  updateCart();
-
-  openCart();
-
-}
+    document.getElementById("totalSales")
+      .textContent = sales.toLocaleString();
 
 
-function changeQuantity(id, amount){
-
-  const item =
-    cart.find(item => item.id === id);
+    document.getElementById("productsSold")
+      .textContent = products;
 
 
-  if(!item) return;
+    ordersList.innerHTML = "";
 
 
-  item.quantity += amount;
+    if (orders.length === 0) {
+
+      ordersList.innerHTML = `
+        <div class="empty">
+          <h3>No orders yet</h3>
+          <p>Customer orders will appear here.</p>
+        </div>
+      `;
+
+      return;
+
+    }
 
 
-  if(item.quantity <= 0){
+    orders
+      .slice()
+      .reverse()
+      .forEach(order => {
 
-    cart =
-      cart.filter(item => item.id !== id);
+        const div =
+          document.createElement("div");
 
-  }
-
-
-  saveCart();
-
-  updateCart();
-
-}
+        div.className = "order";
 
 
-function updateCart(){
-
-  const items =
-    document.getElementById("cartItems");
-
-  const count =
-    document.getElementById("cartCount");
-
-  const totalBox =
-    document.getElementById("cartTotal");
+        let itemsHTML = "";
 
 
-  let total = 0;
+        if (order.items) {
 
-  let quantity = 0;
+          order.items.forEach(item => {
 
+            itemsHTML += `
+              <div>
+                ${escapeHTML(item.name)}
+                × ${item.quantity}
+                — KSh
+                ${(item.price * item.quantity)
+                  .toLocaleString()}
+              </div>
+            `;
 
-  items.innerHTML = "";
+          });
 
-
-  if(cart.length === 0){
-
-    items.innerHTML =
-      '<div class="empty-cart">Your cart is empty.</div>';
-
-  }
-
-
-  cart.forEach(item => {
-
-    const product =
-      products.find(p => p.id === item.id);
+        }
 
 
-    if(!product) return;
+        div.innerHTML = `
 
+          <div class="order-top">
 
-    const subtotal =
-      product.price * item.quantity;
+            <span class="order-id">
+              ${escapeHTML(order.orderId)}
+            </span>
 
+            <span>
+              ${escapeHTML(order.date || "")}
+            </span>
 
-    total += subtotal;
-
-    quantity += item.quantity;
-
-
-    items.innerHTML += `
-
-      <div class="cart-item">
-
-        <div>
-
-          <strong>
-            ${product.name}
-          </strong>
-
-          <div>
-            ${money(subtotal)}
           </div>
 
-        </div>
+
+          <div class="customer">
+
+            <strong>Customer</strong><br>
+
+            Name:
+            ${escapeHTML(order.customer || "")}
+            <br>
+
+            Phone:
+            ${escapeHTML(order.phone || "")}
+            <br>
+
+            Location:
+            ${escapeHTML(order.location || "")}
+
+          </div>
 
 
-        <div class="quantity">
+          <div class="items">
 
-          <button
-            onclick="changeQuantity(${product.id},-1)"
-          >
-            −
-          </button>
+            <strong>Products</strong>
 
-          <span>
-            ${item.quantity}
-          </span>
+            <br><br>
 
-          <button
-            onclick="changeQuantity(${product.id},1)"
-          >
-            +
-          </button>
+            ${itemsHTML}
 
-        </div>
-
-      </div>
-
-    `;
-
-  });
+          </div>
 
 
-  count.textContent = quantity;
+          <div class="total">
 
-  totalBox.textContent =
-    "Total: " + money(total);
+            Total:
+            KSh ${(Number(order.total) || 0)
+              .toLocaleString()}
 
-}
+          </div>
 
-
-function openCart(){
-
-  document.getElementById(
-    "overlay"
-  ).style.display = "block";
-
-  updateCart();
-
-}
+        `;
 
 
-function closeCart(){
+        ordersList.appendChild(div);
 
-  document.getElementById(
-    "overlay"
-  ).style.display = "none";
-
-}
-
-
-function checkout(){
-
-  if(cart.length === 0){
-
-    alert("Your cart is empty.");
-
-    return;
+      });
 
   }
 
 
-  alert(
-    "Checkout is ready for the next upgrade. " +
-    "We can connect real orders and M-Pesa next."
-  );
+  function clearOrders() {
 
-}
-
-
-document
-  .getElementById("search")
-  .addEventListener("input", function(){
-
-    const query =
-      this.value.toLowerCase().trim();
-
-
-    const results =
-      products.filter(product =>
-
-        product.name
-          .toLowerCase()
-          .includes(query)
-
-        ||
-
-        product.description
-          .toLowerCase()
-          .includes(query)
-
+    const answer =
+      confirm(
+        "Delete all orders stored on this device?"
       );
 
 
-    showProducts(results);
+    if (answer) {
 
-  });
+      localStorage.removeItem(
+        "khalifOrders"
+      );
+
+      loadOrders();
+
+    }
+
+  }
 
 
-showProducts(products);
+  function escapeHTML(value) {
 
-updateCart();
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  if (
+    sessionStorage.getItem("khalifAdmin") === "true"
+  ) {
+
+    showDashboard();
+
+  }
 
 </script>
 
