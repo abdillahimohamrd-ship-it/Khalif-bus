@@ -1,358 +1,654 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KHALIF-BUS</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #111827;
-    }
-    header {
-      background: #111827;
-      color: white;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .logo { font-size: 24px; font-weight: 800; }
-    .cart-button {
-      background: #2563eb;
-      color: white;
-      border: 0;
-      padding: 10px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .hero {
-      background: linear-gradient(135deg, #111827, #2563eb);
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
-    }
-    .hero h1 { font-size: clamp(40px, 10vw, 70px); margin: 0 0 12px; }
-    .hero p { font-size: 18px; margin: 0 auto; max-width: 650px; line-height: 1.6; }
-    .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-    .search {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 25px;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .product {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,.08);
-    }
-    .product-image {
-      height: 170px;
-      display: grid;
-      place-items: center;
-      background: #e5e7eb;
-      font-size: 60px;
-    }
-    .product-info { padding: 18px; }
-    .product-info h3 { margin: 0 0 8px; }
-    .price { color: #2563eb; font-weight: 800; font-size: 20px; margin: 12px 0; }
-    .add {
-      width: 100%;
-      background: #111827;
-      color: white;
-      border: 0;
-      padding: 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .add:hover { background: #2563eb; }
-    .empty { text-align: center; padding: 30px; color: #6b7280; display: none; }
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHALIF-BUS</title>
 
-    /* Cart */
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.5);
-      z-index: 20;
-    }
-    .cart-panel {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: min(420px, 92%);
-      background: white;
-      padding: 22px;
-      overflow-y: auto;
-    }
-    .cart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 12px;
-    }
-    .close {
-      background: #e5e7eb;
-      border: 0;
-      border-radius: 7px;
-      padding: 8px 11px;
-      cursor: pointer;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 15px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .quantity button {
-      border: 1px solid #ccc;
-      background: white;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-    }
-    .total {
-      font-size: 22px;
-      font-weight: 800;
-      margin: 20px 0;
-    }
-    .checkout {
-      width: 100%;
-      background: #16a34a;
-      color: white;
-      border: 0;
-      padding: 14px;
-      border-radius: 8px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-    .notice {
-      font-size: 13px;
-      color: #6b7280;
-      margin-top: 10px;
-      line-height: 1.5;
-    }
-  </style>
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f6f8;
+  color:#111827;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#111827;
+  color:white;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+
+.cart-btn{
+  background:#2563eb;
+  color:white;
+  border:0;
+  padding:10px 15px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.hero{
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  text-align:center;
+  padding:75px 20px;
+}
+
+.hero h1{
+  font-size:clamp(40px,10vw,70px);
+  margin:0 0 15px;
+}
+
+.hero p{
+  font-size:19px;
+  line-height:1.6;
+  max-width:650px;
+  margin:auto;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:45px 20px;
+}
+
+.search{
+  width:100%;
+  padding:15px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  font-size:16px;
+  margin-bottom:30px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.product{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.product-image{
+  height:170px;
+  background:#e5e7eb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:60px;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-info h3{
+  margin:0 0 8px;
+}
+
+.price{
+  color:#2563eb;
+  font-size:20px;
+  font-weight:bold;
+  margin:12px 0;
+}
+
+.add{
+  width:100%;
+  background:#111827;
+  color:white;
+  border:0;
+  padding:12px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.add:hover{
+  background:#2563eb;
+}
+
+.no-products{
+  display:none;
+  text-align:center;
+  padding:30px;
+  color:#6b7280;
+}
+
+footer{
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:25px;
+}
+
+/* CART */
+
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:100;
+}
+
+.cart-panel{
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
+  width:min(430px,92%);
+  background:white;
+  padding:22px;
+  overflow-y:auto;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding-bottom:15px;
+}
+
+.close{
+  background:#e5e7eb;
+  border:0;
+  padding:8px 12px;
+  border-radius:7px;
+  cursor:pointer;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:16px 0;
+  border-bottom:1px solid #eee;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.quantity button{
+  width:30px;
+  height:30px;
+  border:1px solid #ccc;
+  background:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.total{
+  font-size:22px;
+  font-weight:bold;
+  margin:22px 0;
+}
+
+.checkout{
+  width:100%;
+  background:#16a34a;
+  color:white;
+  border:0;
+  padding:14px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.empty-cart{
+  text-align:center;
+  padding:30px 0;
+  color:#6b7280;
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">KHALIF-BUS</div>
-    <button class="cart-button" onclick="openCart()">
-      🛒 Cart (<span id="cartCount">0</span>)
-    </button>
-  </header>
 
-  <section class="hero">
-    <h1>KHALIF-BUS</h1>
-    <p>Discover products, shop easily, and grow with us.</p>
-  </section>
+<header>
+  <div class="logo">KHALIF-BUS</div>
 
-  <main class="container">
-    <input
-      id="search"
-      class="search"
-      type="search"
-      placeholder="Search products..."
-      autocomplete="off"
-    >
+  <button class="cart-btn" onclick="openCart()">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </button>
+</header>
 
-    <div id="products" class="products"></div>
-    <div id="empty" class="empty">No products found.</div>
-  </main>
+<section class="hero">
+  <h1>KHALIF-BUS</h1>
+  <p>
+    Discover products, shop easily,
+    and grow with us.
+  </p>
+</section>
 
-  <footer>
-    <strong>KHALIF-BUS</strong>
-    <p>© 2026 KHALIF-BUS</p>
-  </footer>
+<main class="container">
 
-  <div id="cartOverlay" class="overlay" onclick="closeCart(event)">
-    <aside class="cart-panel" onclick="event.stopPropagation()">
-      <div class="cart-header">
-        <h2>Your Cart</h2>
-        <button class="close" onclick="closeCart()">✕</button>
-      </div>
+  <input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="Search products..."
+  >
 
-      <div id="cartItems"></div>
-      <div id="cartTotal" class="total">Total: KSh 0</div>
+  <div id="products" class="products"></div>
 
-      <button class="checkout" onclick="checkout()">Checkout</button>
-      <div class="notice">
-        Demo checkout for now. Real payments such as M-Pesa can be connected later.
-      </div>
-    </aside>
+  <div id="noProducts" class="no-products">
+    No products found.
   </div>
 
-  <script>
-    const products = [
-      { id: 1, name: "Smartphone", price: 15000, icon: "📱", description: "Modern smartphone for everyday use." },
-      { id: 2, name: "Wireless Headphones", price: 2500, icon: "🎧", description: "Comfortable wireless headphones." },
-      { id: 3, name: "Laptop", price: 45000, icon: "💻", description: "A laptop for school and work." },
-      { id: 4, name: "Sports Shoes", price: 3000, icon: "👟", description: "Comfortable shoes for active lifestyles." }
-    ];
+</main>
 
-    let cart = JSON.parse(localStorage.getItem("khalifCart") || "[]");
+<footer>
+  <strong>KHALIF-BUS</strong>
+  <p>© 2026 KHALIF-BUS</p>
+</footer>
 
-    function saveCart() {
-      localStorage.setItem("khalifCart", JSON.stringify(cart));
-    }
 
-    function formatPrice(number) {
-      return "KSh " + number.toLocaleString("en-KE");
-    }
+<!-- CART WINDOW -->
 
-    function renderProducts(list = products) {
-      const container = document.getElementById("products");
-      const empty = document.getElementById("empty");
+<div id="overlay" class="overlay">
 
-      container.innerHTML = list.map(product => `
-        <article class="product">
-          <div class="product-image">${product.icon}</div>
-          <div class="product-info">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <div class="price">${formatPrice(product.price)}</div>
-            <button class="add" onclick="addToCart(${product.id})">
-              Add to Cart
-            </button>
+  <div class="cart-panel">
+
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+
+      <button class="close" onclick="closeCart()">
+        ✕
+      </button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div id="cartTotal" class="total">
+      Total: KSh 0
+    </div>
+
+    <button class="checkout" onclick="checkout()">
+      Checkout
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const products = [
+
+  {
+    id:1,
+    name:"Smartphone",
+    price:15000,
+    icon:"📱",
+    description:"Modern smartphone for everyday use."
+  },
+
+  {
+    id:2,
+    name:"Wireless Headphones",
+    price:2500,
+    icon:"🎧",
+    description:"Comfortable wireless headphones."
+  },
+
+  {
+    id:3,
+    name:"Laptop",
+    price:45000,
+    icon:"💻",
+    description:"A laptop for school and work."
+  },
+
+  {
+    id:4,
+    name:"Sports Shoes",
+    price:3000,
+    icon:"👟",
+    description:"Comfortable shoes for active lifestyles."
+  }
+
+];
+
+
+let cart = JSON.parse(
+  localStorage.getItem("khalifCart") || "[]"
+);
+
+
+function saveCart(){
+
+  localStorage.setItem(
+    "khalifCart",
+    JSON.stringify(cart)
+  );
+
+}
+
+
+function money(number){
+
+  return "KSh " +
+    number.toLocaleString("en-KE");
+
+}
+
+
+function showProducts(list){
+
+  const box =
+    document.getElementById("products");
+
+  const empty =
+    document.getElementById("noProducts");
+
+
+  box.innerHTML = "";
+
+
+  if(list.length === 0){
+
+    empty.style.display = "block";
+
+    return;
+
+  }
+
+
+  empty.style.display = "none";
+
+
+  list.forEach(product => {
+
+    box.innerHTML += `
+
+      <div class="product">
+
+        <div class="product-image">
+          ${product.icon}
+        </div>
+
+        <div class="product-info">
+
+          <h3>${product.name}</h3>
+
+          <p>${product.description}</p>
+
+          <div class="price">
+            ${money(product.price)}
           </div>
-        </article>
-      `).join("");
 
-      empty.style.display = list.length ? "none" : "block";
-    }
+          <button
+            class="add"
+            onclick="addToCart(${product.id})"
+          >
+            Add to Cart
+          </button>
 
-    function addToCart(id) {
-      const item = cart.find(item => item.id === id);
+        </div>
 
-      if (item) {
-        item.quantity += 1;
-      } else {
-        cart.push({ id, quantity: 1 });
-      }
+      </div>
 
-      saveCart();
-      renderCart();
-      updateCartCount();
-    }
+    `;
 
-    function changeQuantity(id, amount) {
-      const item = cart.find(item => item.id === id);
-      if (!item) return;
+  });
 
-      item.quantity += amount;
+}
 
-      if (item.quantity <= 0) {
-        cart = cart.filter(item => item.id !== id);
-      }
 
-      saveCart();
-      renderCart();
-      updateCartCount();
-    }
+function addToCart(id){
 
-    function updateCartCount() {
-      const count = cart.reduce((total, item) => total + item.quantity, 0);
-      document.getElementById("cartCount").textContent = count;
-    }
+  const existing =
+    cart.find(item => item.id === id);
 
-    function renderCart() {
-      const container = document.getElementById("cartItems");
 
-      if (cart.length === 0) {
-        container.innerHTML = "<p>Your cart is empty.</p>";
-      } else {
-        container.innerHTML = cart.map(item => {
-          const product = products.find(p => p.id === item.id);
-          const subtotal = product.price * item.quantity;
+  if(existing){
 
-          return `
-            <div class="cart-item">
-              <div>
-                <strong>${product.name}</strong>
-                <div>${formatPrice(subtotal)}</div>
-              </div>
+    existing.quantity++;
 
-              <div class="quantity">
-                <button onclick="changeQuantity(${product.id}, -1)">−</button>
-                <span>${item.quantity}</span>
-                <button onclick="changeQuantity(${product.id}, 1)">+</button>
-              </div>
-            </div>
-          `;
-        }).join("");
-      }
+  }else{
 
-      const total = cart.reduce((sum, item) => {
-        const product = products.find(p => p.id === item.id);
-        return sum + product.price * item.quantity;
-      }, 0);
-
-      document.getElementById("cartTotal").textContent =
-        "Total: " + formatPrice(total);
-    }
-
-    function openCart() {
-      document.getElementById("cartOverlay").style.display = "block";
-      renderCart();
-    }
-
-    function closeCart() {
-      document.getElementById("cartOverlay").style.display = "none";
-    }
-
-    function checkout() {
-      if (cart.length === 0) {
-        alert("Your cart is empty.");
-        return;
-      }
-
-      alert(
-        "Checkout is working as a demo. " +
-        "Next we can connect KHALIF-BUS to real orders and M-Pesa."
-      );
-    }
-
-    document.getElementById("search").addEventListener("input", function () {
-      const query = this.value.toLowerCase().trim();
-
-      const filtered = products.filter(product =>
-        product.name.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query)
-      );
-
-      renderProducts(filtered);
+    cart.push({
+      id:id,
+      quantity:1
     });
 
-    renderProducts();
-    renderCart();
-    updateCartCount();
-  </script>
+  }
+
+
+  saveCart();
+
+  updateCart();
+
+  openCart();
+
+}
+
+
+function changeQuantity(id, amount){
+
+  const item =
+    cart.find(item => item.id === id);
+
+
+  if(!item) return;
+
+
+  item.quantity += amount;
+
+
+  if(item.quantity <= 0){
+
+    cart =
+      cart.filter(item => item.id !== id);
+
+  }
+
+
+  saveCart();
+
+  updateCart();
+
+}
+
+
+function updateCart(){
+
+  const items =
+    document.getElementById("cartItems");
+
+  const count =
+    document.getElementById("cartCount");
+
+  const totalBox =
+    document.getElementById("cartTotal");
+
+
+  let total = 0;
+
+  let quantity = 0;
+
+
+  items.innerHTML = "";
+
+
+  if(cart.length === 0){
+
+    items.innerHTML =
+      '<div class="empty-cart">Your cart is empty.</div>';
+
+  }
+
+
+  cart.forEach(item => {
+
+    const product =
+      products.find(p => p.id === item.id);
+
+
+    if(!product) return;
+
+
+    const subtotal =
+      product.price * item.quantity;
+
+
+    total += subtotal;
+
+    quantity += item.quantity;
+
+
+    items.innerHTML += `
+
+      <div class="cart-item">
+
+        <div>
+
+          <strong>
+            ${product.name}
+          </strong>
+
+          <div>
+            ${money(subtotal)}
+          </div>
+
+        </div>
+
+
+        <div class="quantity">
+
+          <button
+            onclick="changeQuantity(${product.id},-1)"
+          >
+            −
+          </button>
+
+          <span>
+            ${item.quantity}
+          </span>
+
+          <button
+            onclick="changeQuantity(${product.id},1)"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  count.textContent = quantity;
+
+  totalBox.textContent =
+    "Total: " + money(total);
+
+}
+
+
+function openCart(){
+
+  document.getElementById(
+    "overlay"
+  ).style.display = "block";
+
+  updateCart();
+
+}
+
+
+function closeCart(){
+
+  document.getElementById(
+    "overlay"
+  ).style.display = "none";
+
+}
+
+
+function checkout(){
+
+  if(cart.length === 0){
+
+    alert("Your cart is empty.");
+
+    return;
+
+  }
+
+
+  alert(
+    "Checkout is ready for the next upgrade. " +
+    "We can connect real orders and M-Pesa next."
+  );
+
+}
+
+
+document
+  .getElementById("search")
+  .addEventListener("input", function(){
+
+    const query =
+      this.value.toLowerCase().trim();
+
+
+    const results =
+      products.filter(product =>
+
+        product.name
+          .toLowerCase()
+          .includes(query)
+
+        ||
+
+        product.description
+          .toLowerCase()
+          .includes(query)
+
+      );
+
+
+    showProducts(results);
+
+  });
+
+
+showProducts(products);
+
+updateCart();
+
+</script>
+
 </body>
 </html>
